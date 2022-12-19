@@ -1,0 +1,1 @@
+web: gunicorn digitalinnovations.wsgi --log-file -
