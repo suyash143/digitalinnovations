@@ -13,6 +13,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="{% static  'assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
@@ -30,33 +34,29 @@ https://templatemo.com/tm-572-designer
   </head>
 
 <body>
+<a href="{% static 'assets/images/whatsapp_qr.jpeg'%}" >
+<img src="{% static 'assets/images/whatsapp.png' %}"  >
+</a>
+<style></style>
+  <div class="loader" style="    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
 
-  <div class="loader">
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-       width="34px" height="40px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-      <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
-        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.8s" repeatCount="indefinite" />
-        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.8s" repeatCount="indefinite" />
-        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.8s" repeatCount="indefinite" />
-      </rect>
-      <rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">
-        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.8s" repeatCount="indefinite" />
-        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.8s" repeatCount="indefinite" />
-        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.8s" repeatCount="indefinite" />
-      </rect>
-      <rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">
-        <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.8s" repeatCount="indefinite" />
-        <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.8s" repeatCount="indefinite" />
-        <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.8s" repeatCount="indefinite" />
-      </rect>
-    </svg>
+    background-color: white;
+    background-image: url({% static 'assets/images/animationwebsite.png'%});
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;">
+
   </div>
 
   <header id="#top">
 
       <nav class="main-navigation navbar navbar-expand-lg navbar-light">
           <div class="container" style='padding-left: 20px;padding-right: 20px'>
-            <a class="navbar-brand" href="index.html"><img src="{% static 'assets/images/white-logo.png' %}" style="height:50px;width:50px;
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'assets/images/white-logo.png' %}" style="height:50px;width:50px;
     background-color: rgb(255,255,255);linear-gradient(90deg, rgba(42,42,42,0.5497549361541492) 0%, rgba(255,255,255,0.7654412106639531) 50%, rgba(42,42,42,0.5525560566023284) 100%);
 border-radius: 7px" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -177,6 +177,7 @@ border-radius: 7px" alt=""></a>
 
   <script src="{% static 'assets/js/isotope.min.js' %}"></script>
   <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+  <script src="{% static  'assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
 
   <script src="{% static 'assets/js/tabs.js' %}"></script>
   <script src="{% static 'assets/js/popup.js' %}"></script>
@@ -190,6 +191,10 @@ border-radius: 7px" alt=""></a>
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
     });
+	$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+  event.preventDefault();
+  $(this).ekkoLightbox();
+});
   </script>
 
 </body>
