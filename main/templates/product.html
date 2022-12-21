@@ -1,6 +1,32 @@
 {% extends 'index_main.html' %}
 {% load static %}
+<style>
+    {box-sizing: border-box;}
 
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+</style>
 {% block content %}
 <div class="page-banner change-name">
         <div class="container">
@@ -33,56 +59,63 @@
 
                     <p style="font-size: x-large">{{ product.description|linebreaks }}</p>
                 </div>
-                <div class="col-lg-6">
-                    <img src="assets/images/explore-item-02.jpg" alt="">
+                <div class="col-lg-6 offset-lg-3">
+                    <img src="/static{{ product.specification.url }}" alt="">
                 </div>
-                <div class="col-lg-6">
-                    <img src="assets/images/explore-item-03.jpg" alt="">
-                </div>
-                <div class="col-lg-12">
-                    <div class="down-content">
-                        <h4>Incredible Work</h4>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto toril beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequida nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="projects-pagination">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="left-pagination">
-                                    <img class="float-start" src="assets/images/pagination-left-image.jpg" alt="">
-                                    <div class="right-content">
-                                        <a href="explore.html"><h6>Minimalistic Living Room</h6></a>
-                                        <span>Interior Design</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="right-pagination">
-                                    <img class="float-end" src="assets/images/pagination-right-image.jpg" alt="">
-                                    <div class="float-end left-content">
-                                        <a href="explore.html"><h6>Futuristic Interior Concept</h6></a>
-                                        <span>Interior Design</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </section>
+
+          <section class="contact-us form-popup" id="contact" style="background-image: None;padding-bottom: 1px;padding-top: 1px" >
+      <div class="container" id="myForm" style="display: none">
+          <div class="row">
+              <div class="col-lg-6 left-form">
+                  <form id="contact" action="" method="post" onsubmit="myFunction()">
+                      {% csrf_token %}
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <div class="section-heading">
+                                  <h2>Please fill out a small form before we start the<br><em>Download</em></h2>
+                              </div>
+                          </div>
+                          <div class="col-lg-6">
+                              <input name="name" type="text" id="name" placeholder="Full Name*" required="">
+                          </div>
+                          <div class="col-lg-6">
+                              <input name="mob_number" type="number" id="mob_number" placeholder="Contact Number*" required="">
+                          </div>
+                          <div class="col-lg-12">
+                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email*" required="">
+                          </div>
+
+                          <div class="col-lg-12">
+                              <button type="submit" id="form-submit" class="main-button ">Send Message</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+              <script>
+                  function myFunction() {
+  alert("Thank you, your download will start soon");window.open({{ product.brochure.url }});
+}
+              </script>
+
+          </div>
+      </div>
+  </section>
 
 
     <section class="call-to-action">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <h2>Looking to Work On A Project ?</h2>
+                    <h2>Download Brochure</h2>
                 </div>
                 <div class="col-lg-4">
                     <div class="white-button">
-                        <a href="#">Contact Us Now</a>
+                        <button onclick='  document.getElementById("myForm").style.display = "block"; '> Download now</button>
                     </div>
                 </div>
             </div>
@@ -90,4 +123,15 @@
     </section>
 
 
+
 {% endblock content %}
+
+<script>
+    function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>

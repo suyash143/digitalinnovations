@@ -1,6 +1,11 @@
 from django.shortcuts import render,redirect
 from .models import *
 import datetime
+import os
+from django.http import StreamingHttpResponse
+import mimetypes
+from wsgiref.util import FileWrapper
+
 # Create your views here.
 def index(request):
     products=Products.objects.all()
@@ -33,4 +38,30 @@ def product(request,**kwargs):
         product=Products.objects.get(pk=kwargs.get('prodpk'))
     else:
         return redirect('index')
+    if request.method=='POST':
+        name = request.POST.get('name')
+        mobile = request.POST.get('mob_number')
+        email = request.POST.get('email')
+        sc, created = Contact.objects.get_or_create(created_at=datetime.datetime.now(), name=name, email=email,
+                                                    number=mobile, message="Brochure Download")
+        sc.save()
+
+        filepath=product.brochure.path
+        thefile=filepath
+
+        chunk_size=8192
+        response=StreamingHttpResponse(FileWrapper(open(thefile,'rb'),chunk_size),
+                                       content_type=mimetypes.guess_type(thefile)[0])
+        response['Content-Length']=os.path.getsize(thefile)
+        response['Content-Disposition']="Attachment;filename=%s" % "Digital Innovations.pdf"
+        return response
+
     return render(request,'product.html',{"product":product})
+
+def contact_us(request):
+    return render(request,'contactus.html')
+
+
+def about_us(request):
+    return render(request,'about_us.html')
+
