@@ -8,6 +8,7 @@ from wsgiref.util import FileWrapper
 
 # Create your views here.
 def index(request):
+
     products=Products.objects.all()
     categories=Categories.objects.all()
     if request.method == 'POST':
@@ -18,7 +19,7 @@ def index(request):
         sc, created = Contact.objects.get_or_create(created_at=datetime.datetime.now(), name=name, email=email,
                                                         number=mobile, message=message)
         sc.save()
-    return render(request,'index.html',{'products':products,'categories':categories})
+    return render(request,'index.html',{'products':products,'categories':categories,'index':'active'})
 
 
 def product_list(request,**kwargs):
@@ -59,9 +60,11 @@ def product(request,**kwargs):
     return render(request,'product.html',{"product":product})
 
 def contact_us(request):
-    return render(request,'contactus.html')
+    contact_us='active'
+    return render(request,'contactus.html',{'contact_us':contact_us})
 
 
 def about_us(request):
-    return render(request,'about_us.html')
+    about_us='active'
+    return render(request,'about_us.html',{'about_us':about_us})
 
