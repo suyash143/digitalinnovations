@@ -1,0 +1,93 @@
+{% extends 'index_main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="page-banner change-name">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="header-text">
+                        <h2><em>{{ product.category.title }}</em> </h2>
+                        <p>{{ product.category.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <section class="explore-item">
+        <div class="container expanded">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>{{ product.title }}</h2>
+                    </div>
+                    <div class="main-image">
+                        <img src="/static{{ product.image.url }}" alt="master bedroom design">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+
+                    <p style="font-size: x-large">{{ product.description|linebreaks }}</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/explore-item-02.jpg" alt="">
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/explore-item-03.jpg" alt="">
+                </div>
+                <div class="col-lg-12">
+                    <div class="down-content">
+                        <h4>Incredible Work</h4>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto toril beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequida nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.</p>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="projects-pagination">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="left-pagination">
+                                    <img class="float-start" src="assets/images/pagination-left-image.jpg" alt="">
+                                    <div class="right-content">
+                                        <a href="explore.html"><h6>Minimalistic Living Room</h6></a>
+                                        <span>Interior Design</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-pagination">
+                                    <img class="float-end" src="assets/images/pagination-right-image.jpg" alt="">
+                                    <div class="float-end left-content">
+                                        <a href="explore.html"><h6>Futuristic Interior Concept</h6></a>
+                                        <span>Interior Design</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>Looking to Work On A Project ?</h2>
+                </div>
+                <div class="col-lg-4">
+                    <div class="white-button">
+                        <a href="#">Contact Us Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}
