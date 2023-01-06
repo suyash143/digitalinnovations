@@ -18,6 +18,9 @@ class Products(models.Model):
     brochure=models.FileField(blank=True,null=True)
     category=models.ForeignKey(Categories,on_delete=models.SET_NULL,null=True,blank=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Contact(models.Model):
     name=models.CharField(max_length=500,null=True,blank=True)
